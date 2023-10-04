@@ -20,4 +20,14 @@ const getAllProducts = (req, res) => {
     })
 }
 
-module.exports = {createProduct , getAllProducts}
+const newProduct = (req , res) => {
+    product_model.newProduct_Filter((err , results) => {
+        if(err){
+            res.send(err)
+        }
+        res.json(results)
+    })
+
+}
+
+module.exports = {createProduct , getAllProducts , newProduct}

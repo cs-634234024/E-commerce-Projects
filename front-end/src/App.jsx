@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Toaster
-        position="top-center"
+        position="bottom-center"
         reverseOrder={false}
       />
       <ConnectRouter/>
