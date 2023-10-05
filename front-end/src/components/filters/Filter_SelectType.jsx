@@ -7,7 +7,7 @@ const Filter_SelectType = () => {
         <span className="label-text">T-shirt for Men's</span>
         <input
           type="checkbox"
-          checked=""
+          checked="checked"
           className="checkbox checkbox-warning"
         />
       </label>
@@ -15,7 +15,7 @@ const Filter_SelectType = () => {
         <span className="label-text">T-shirt for FeMen's</span>
         <input
           type="checkbox"
-          checked=""
+          checked="checked"
           className="checkbox checkbox-warning"
         />
       </label>
@@ -23,7 +23,7 @@ const Filter_SelectType = () => {
         <span className="label-text">T-shirt for Unisex</span>
         <input
           type="checkbox"
-          checked=""
+          checked="checked"
           className="checkbox checkbox-warning"
         />
       </label>

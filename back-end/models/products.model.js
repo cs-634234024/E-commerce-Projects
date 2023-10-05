@@ -34,5 +34,37 @@ const newProduct_Filter = (result) => {
         }
     })
 }
+const   topRatingProduct_Filter = (result) => {
+    const sql = `SELECT * FROM ${table} ORDER BY p_rating DESC`
+    connection.query(sql, (err, results) => {
+        if (err) {
+            result(err, null)
+        } else {
+            result(null, results)
+        }
+    })
+}
+const   menProduct_Filter = (result) => {
+    const sex = 'men'
+    const sql = `SELECT * FROM ${table} WHERE p_type = 'men'`
+    connection.query(sql, (err, results) => {
+        if (err) {
+            result(err, null)
+        } else {
+            result(null, results)
+        }
+    })
+}
+const   femenProduct_Filter = (result) => {
+    const sex = 'men'
+    const sql = `SELECT * FROM ${table} WHERE p_type = 'femen'`
+    connection.query(sql, (err, results) => {
+        if (err) {
+            result(err, null)
+        } else {
+            result(null, results)
+        }
+    })
+}
 
-module.exports = { createProducts, getAllProducts, newProduct_Filter }
+module.exports = { createProducts, getAllProducts, newProduct_Filter, topRatingProduct_Filter , menProduct_Filter , femenProduct_Filter}

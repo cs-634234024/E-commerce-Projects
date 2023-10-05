@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [auth , setAuth] = useState()
+  const [tokenCheck , setTokenCheck] = useState(false)
   const [userinfo , setUserInfo] = useState(localStorage.getItem("userinfo")? localStorage.getItem("userinfo") : null)
   const [token, setToken] = useState(localStorage.getItem("token"));
   const handleSignUp = async (data) => {
@@ -46,6 +47,7 @@ const AuthContextProvider = ({ children }) => {
       if (res.data.status === "ok") {
         const token = res.data.token;
         setToken(token)
+        setTokenCheck(true)
         localStorage.setItem("token", token);
         const headers = {
           Authorization: `bearer ${token}`,
@@ -90,7 +92,7 @@ const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, handleSignUp, handleLogin, userinfo , handleLogout}}
+      value={{ token, handleSignUp, handleLogin, userinfo , handleLogout , tokenCheck}}
     >
       {children}
     </AuthContext.Provider>

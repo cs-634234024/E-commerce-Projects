@@ -3,9 +3,11 @@ import React from "react";
 import { FaBeer } from "react-icons/fa";
 import avatar from "../../assets/images/avatar/man.png";
 import { useAuthContext } from "../../contexts";
-
+import { useCartContext } from "../../contexts";
+import { Link } from "react-router-dom";
 const NavbarPrivate = () => {
   const { handleLogout } = useAuthContext();
+  const {dataInCart} = useCartContext()
   return (
     <div className="container mx-auto">
       <div className="navbar bg-base-100 shadow rounded-lg">
@@ -50,14 +52,14 @@ const NavbarPrivate = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case font-bold text-2xl">
+          <Link to={'/'} className="btn btn-ghost normal-case font-bold text-2xl">
             Yosu Brande
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a> Home </a>
+              <Link to={'/'}> Home </Link>
             </li>
             <li tabIndex={0}>
               <details>
@@ -98,7 +100,7 @@ const NavbarPrivate = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">8</span>
+                <span className="badge badge-sm bg-red-500 text-white indicator-item">{dataInCart.length}</span>
               </div>
             </label>
             <div
@@ -106,12 +108,14 @@ const NavbarPrivate = () => {
               className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
             >
               <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
+                <span className="font-bold text-lg">{
+                  dataInCart.length === 0 ? "ไม่มีสินค้าในตระกร้า" : `มีสินค้าอยู่ ${dataInCart.length} ชิ้น`
+                }</span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
+                  <Link to={'cart'} className="btn btn-primary btn-block">
                     View cart
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
